@@ -17,7 +17,7 @@ import redis.clients.jedis.Pipeline;
 
 public class RedisHashIO {
 
-    private final Logger LOG = LoggerFactory.getLogger(StarterPipeline.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StarterPipeline.class);
 
     public static RedisHashIO.Write write() {
         return (new com.click.example.AutoValue_RedisHashIO_Write.Builder()).setConnectionConfiguration(RedisConnectionConfiguration.create()).build();
@@ -105,9 +105,9 @@ public class RedisHashIO {
                     pipeline.sync();
                     pipeline.multi();
                     batchCount = 0;
-//                    LOG.debug("Batch Write Complete and pipeline Flushed");
+                    LOG.debug("Batch Write Complete and pipeline Flushed");
                 }
-//                LOG.debug("Record Processed...");
+                LOG.debug("Record Processed...");
             }
 
             private void writeRecord(KV<String, KV<String, String>> record) {

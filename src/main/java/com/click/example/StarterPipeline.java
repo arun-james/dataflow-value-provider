@@ -178,9 +178,9 @@ public class StarterPipeline {
                           LOG.info("Created the hash...");
                       }
                   }
-              }))
-              .apply("Writing Hash Data into Redis",RedisHashIO.write()
-                      .withConnectionConfiguration(RedisConnectionConfiguration.create(options.getRedisHost(), options.getRedisPort())));
+              }));
+//              .apply("Writing Hash Data into Redis",RedisHashIO.write()
+//                      .withConnectionConfiguration(RedisConnectionConfiguration.create(options.getRedisHost(), options.getRedisPort())));
 
     p.run();
   }
